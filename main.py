@@ -1,5 +1,7 @@
 import ply.lex as lex
 
+#ADECUAR A GRAMÁTICA PROPIA
+
 # Definimos los tokens
 tokens = (
     'KEYWORD', 'IDENTIFIER', 'NUMBER', 'OP', 'SYMBOL'
@@ -20,6 +22,7 @@ literals = "=+-*/(){};"
 
 
 def t_IDENTIFIER(t):
+    #alfanumerico
     r'[a-zA-Z_][a-zA-Z0-9_]*'
     t.type = keywords.get(t.value, 'IDENTIFIER')
     return t
@@ -43,10 +46,17 @@ def t_error(t):
     print(f"Caracter ilegal: {t.value[0]}")
     t.lexer.skip(1)
 
+#DEF LENGAJE
+#EXP REG
+#USO EXP R PARA GENRAR GRAM
+#GRAM = STRUCTURA
+#GRAM LEE A TRAVÉS DE LEXEMAS
+
 
 lexer = lex.lex()
 
-
+#ORIGEN ARCHIVO DE ENTRAADA MODIFICAR
+#SOBRE NUESTRO LENGUAJE
 def analyze_code(code):
     lexer.input(code)
     tokens_list = [(tok.type, tok.value) for tok in lexer]
@@ -76,7 +86,8 @@ def generate_html_report(tokens, filename="tokens.html"):
         file.write(html)
     print(f"Reporte generado: {filename}")
 
-
+#ARCHIVO EXTERNO DE CUALQUIER MEDIO
+#DEFINIR ÁMBITOS SEGÚN CADA VARIABLE O SÍMBOLO
 sample_code = """
 int x = 10;
 float y = 5.5;
